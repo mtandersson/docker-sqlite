@@ -1,0 +1,8 @@
+{
+  "extends": ["config:base"],
+  "automerge": true,
+  "rebaseWhen": "behind-base-branch",
+  "timezone": "Europe/Madrid",
+  "prHourlyLimit": 8,
+  "requiredStatusChecks": null
+}

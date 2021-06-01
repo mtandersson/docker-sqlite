@@ -1,0 +1,23 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Extract tag and tag
+        run: |
+          set -e -x
+          TAG=$(grep -Po 'debian:stable-\K.*(?=-slim)' Dockerfile)
+          git tag $TAG || echo "Existing tag"
+          git push origin $TAG || echo "tag exists"
